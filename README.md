@@ -2,6 +2,12 @@
 
 A theme for Claude: a pearl-white page covered in fine Damascus contour lines that carry a slow prismatic sheen. In dark mode the same lines become glowing foil on near-black.
 
+| Light | Dark |
+|---|---|
+| ![Holo Damascus in light mode](docs/light.png) | ![Holo Damascus in dark mode](docs/dark.png) |
+
+*Mock-ups with sample text: the backdrop and colours are the theme's own, the window around them is a stand-in for the app.*
+
 It themes the Claude desktop and mobile apps (colours, code highlighting accents and an animated backdrop). The terminal draws no theme, so nothing changes there.
 
 ## Install
@@ -36,7 +42,7 @@ The line pattern is generated, not drawn by hand. For a different swirl, run the
 node tools/gen.js 42
 ```
 
-It rewrites `hooks/scene.ts`. The knobs at the top of `tools/gen.js` set line spacing, the gap inside each pair of lines, feature size and how hard the pattern folds. Colours are in `hooks/register.tsx`, and `glass.opacity` there sets how much of the pattern shows through panels.
+It rewrites `hooks/scene.ts`. `node tools/preview.js` then redraws the images above (needs Google Chrome). The knobs at the top of `tools/gen.js` set line spacing, the gap inside each pair of lines, feature size and how hard the pattern folds. Colours are in `hooks/register.tsx`, and `glass.opacity` there sets how much of the pattern shows through panels.
 
 ## Licence
 
