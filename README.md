@@ -8,6 +8,8 @@ A theme for Claude: a pearl-white page covered in fine Damascus contour lines th
 
 It themes the Claude desktop and mobile apps (colours, code highlighting accents and an animated backdrop). The terminal draws no theme, so nothing changes there.
 
+**Needs Claude Code v2.1.324 or later.** Check the version in the desktop app's Code tab before installing.
+
 ## Install
 
 In the Claude desktop app: click **+** next to the prompt box, then **Plugins**, **Add marketplace** with `bassonrichard/holo-damascus`, then **Add plugin**.
@@ -25,6 +27,25 @@ claude plugin install holo-damascus --marketplace bassonrichard/holo-damascus
 ```
 
 Start a new session and the theme paints. It follows the app's light or dark mode.
+
+## Update
+
+When a new version is out, run these two commands, then start a new session:
+
+```bash
+claude plugin marketplace update holo-damascus
+```
+
+```bash
+claude plugin update holo-damascus@holo-damascus
+```
+
+## If the theme doesn't show up
+
+- **Start a new session.** A session keeps the look it started with, so one that was already open won't change.
+- **Turn off other themes.** Only one theme can stand per session. With two enabled you get one theme's colours with the other's backdrop, or the wrong one entirely. Disable the other in **+** → **Plugins**.
+- **Update Claude.** Themes need Claude Code v2.1.324 or later. Older versions install the plugin and paint nothing.
+- **Stuck in dark mode?** That is another theme winning. Holo Damascus follows the app's light or dark setting; some themes are dark-only.
 
 ## Good to know
 
