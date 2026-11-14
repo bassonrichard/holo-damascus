@@ -1,0 +1,5 @@
+{
+  "name": "holo-damascus",
+  "owner": { "name": "Richard Basson" },
+  "plugins": [{ "name": "holo-damascus", "source": "./" }]
+}

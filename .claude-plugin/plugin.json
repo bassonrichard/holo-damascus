@@ -1,0 +1,8 @@
+{
+  "name": "holo-damascus",
+  "version": "0.1.0",
+  "description": "A pearl-white look with prismatic Damascus contour lines, and a black foil version for dark mode.",
+  "author": { "name": "Richard Basson" },
+  "license": "MIT",
+  "repository": "https://github.com/bassonrichard/holo-damascus"
+}
