@@ -50,7 +50,7 @@ claude plugin update holo-damascus@holo-damascus
 ## Good to know
 
 - Only one theme can stand per session. If you have another theme mod enabled, turn it off, or the two will fight over the look.
-- The sheen drifts on a 90 second loop and stops when your system asks for reduced motion.
+- The background is animated: the colours sweep around the lines once every 70 seconds, and stop when your system asks for reduced motion. `SPIN` in `tools/gen.js` sets the speed.
 - To remove it: `claude plugin uninstall holo-damascus`.
 
 ## Make it yours

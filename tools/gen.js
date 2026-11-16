@@ -116,19 +116,21 @@ for (let base = Math.ceil(lo / BAND) * BAND; base < hi; base += BAND) {
 }
 
 // --- scene ---------------------------------------------------------------------
-// Holo blotches: soft colour pools under the line mask, drifting slowly.
-const pools = [
-  ['#ff5a4f', 300, 1500, 620], ['#ffb02e', 900, 300, 640], ['#f4e04d', 2500, 600, 560],
-  ['#3ddc84', 300, 500, 600], ['#2fd6d0', 1800, 1700, 660], ['#4d7cff', 1500, 900, 620],
-  ['#8b5cf6', 2900, 1500, 640], ['#f062c0', 2200, 100, 520], ['#3ddc84', 3300, 900, 520],
-  ['#ff5a4f', 1100, 2100, 520],
-]
+// Holo blotches: soft colour pools under the line mask, laid out on rings around the
+// centre so the whole disc stays covered while the group turns.
+const SPIN = 70                 // seconds per full turn of the sheen; lower = livelier
+const hues = ['#ff5a4f', '#ffb02e', '#f4e04d', '#3ddc84', '#2fd6d0', '#4d7cff', '#8b5cf6', '#f062c0']
+const ring = (n, dist, r, shift) => Array.from({ length: n }, (_, k) => {
+  const a = (k / n) * Math.PI * 2 + shift
+  return [hues[(k * 3 + shift * 2 | 0) % hues.length], Math.round(W + dist * Math.cos(a)), Math.round(H + dist * Math.sin(a)), r]
+})
+const pools = [[hues[5], W, H, 560], ...ring(6, 760, 620, 0.4), ...ring(11, 1560, 680, 1.1)]
 const css = (light, dark) => `
 .bg{fill:${light.bg}}.base{fill:${light.base}}.pool{opacity:${light.pool}}.hi{opacity:${light.hi}}
 @media (prefers-color-scheme:dark){.bg{fill:${dark.bg}}.base{fill:${dark.base}}.pool{opacity:${dark.pool}}.hi{opacity:${dark.hi}}}
 .dark .bg{fill:${dark.bg}}.dark .base{fill:${dark.base}}.dark .pool{opacity:${dark.pool}}.dark .hi{opacity:${dark.hi}}
-.holo{animation:drift 90s ease-in-out infinite alternate}
-@keyframes drift{from{transform:translate(-260px,-120px)}to{transform:translate(260px,160px)}}
+.holo{transform-origin:${W}px ${H}px;animation:spin ${SPIN}s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 @media (prefers-reduced-motion:reduce){.holo{animation:none}}`
 const scene = (cls = '') => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W * 2} ${H * 2}" preserveAspectRatio="xMidYMid slice" width="100%" height="100%"${cls && ` class="${cls}"`}>
 <style>${css(
